@@ -16,7 +16,7 @@ Primero, el sistema se conecta a una base de datos de SQLite (contours.db) donde
 letras que ya registré antes. Lo que hago aquí es sacar los contornos que están guardados como "pickles" (o sea,
 comprimidos).
 
-Redundancia: Aquí lo que hago es normalizar el contorno. O sea, lo muevo al punto (0,0) para que no importe en qué parte
+Aquí lo que hago es normalizar el contorno. O sea, lo muevo al punto (0,0) para que no importe en qué parte
 de la cámara esté la mano, siempre lo vea igual. Luego lo escalo a un tamaño de 64 píxeles porque si es más grande o más
 chico el sistema se confunde.
 
@@ -63,7 +63,7 @@ los reconozca.
 Aquí usé sqlite3 para crear una tabla que se llama colores. Lo que hace es guardar la etiqueta (por ejemplo, "rojo") y
 sus valores H, S y V.
 
-Redundancia: Cada vez que le pico al botón, el sistema guarda el valor exacto del píxel central. Lo configuré para que tome
+Cada vez que le pico al botón, el sistema guarda el valor exacto del píxel central. Lo configuré para que tome
 200 muestras seguidas. ¿Por qué 200? Porque la luz cambia mucho y así tengo un promedio real de cómo se ve el color en
 diferentes micro-segundos. Si guardara solo uno, el sistema fallaría si pasa una mosca o cambia una sombra.
 
@@ -81,7 +81,7 @@ entrenar. Si el área es menor a 400 píxeles, el código lo ignora porque segur
 Esta es la parte "mañosa" del código. En lugar de sacar el promedio de todo el objeto (que consume mucho procesador),
 simplemente calculo el centro geométrico (cx, cy) del rectángulo que encierra al objeto.
 
-Explicación redundante: Saco el color de ese único punto central. Convierto ese píxel de BGR (que es como lee OpenCV) a HSV,
+Saco el color de ese único punto central. Convierto ese píxel de BGR (que es como lee OpenCV) a HSV,
 porque el HSV es mucho más estable para nosotros los humanos y para programar.
 
   4. Interfaz con Tkinter (La Ventana)
